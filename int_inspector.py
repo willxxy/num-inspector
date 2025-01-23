@@ -275,12 +275,12 @@ def demo():
                 print(f"Binary: {result['binary']['full']}")
                 print(f"Hex: {result['hex']}")
     
-    print("\nGenerating visualizations for 42 across all supported types...")
+    print(f"\nGenerating visualizations for {value} across all supported types...")
     for dtype in analyzer.SUPPORTED_DTYPES:
         precision_name, framework, _ = analyzer.SUPPORTED_DTYPES[dtype]
         try:
             fig = analyzer.visualize_components(value, dtype)
-            plt.savefig(f'./pngs/int_components_{framework.lower()}_{get_type_name(dtype)}_42.png')
+            plt.savefig(f'./pngs/int_components_{framework.lower()}_{get_type_name(dtype)}_{value}.png')
             plt.close()
             print(f"Generated visualization for {precision_name} ({framework})")
         except (ValueError, OverflowError, RuntimeError) as e:
