@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 import torch
 import numpy as np
@@ -275,6 +276,7 @@ def demo():
                 print(f"Binary: {result['binary']['full']}")
                 print(f"Hex: {result['hex']}")
     
+    os.makedirs('./pngs', exist_ok=True)
     print(f"\nGenerating visualizations for {value} across all supported types...")
     for dtype in analyzer.SUPPORTED_DTYPES:
         precision_name, framework, _ = analyzer.SUPPORTED_DTYPES[dtype]
