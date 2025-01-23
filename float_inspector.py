@@ -234,12 +234,12 @@ def demo():
                 
     
     os.makedirs('./pngs', exist_ok=True)
-    print("\nGenerating visualizations for π across all supported types...")
+    print(f"\nGenerating visualizations for {value} across all supported types...")
     for dtype in analyzer.SUPPORTED_DTYPES:
         precision_name, framework = analyzer.SUPPORTED_DTYPES[dtype]
         try:
             fig = analyzer.visualize_components(value, dtype)
-            plt.savefig(f'./pngs/float_components_{framework.lower()}_{get_type_name(dtype)}_pi.png')
+            plt.savefig(f'./pngs/float_components_{framework.lower()}_{get_type_name(dtype)}_{value}.png')
             plt.close()
             print(f"Generated visualization for {precision_name} ({framework})")
         except (ValueError, OverflowError) as e:
